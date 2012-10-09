@@ -953,6 +953,7 @@ en:
     view: View
     view_tooltip: View the map
     edit: Edit
+    activity: Activity
     history: History
     export: Export
     export_tooltip: Export map data
@@ -1024,22 +1025,22 @@ en:
         code</a> explains your rights and responsibilities.
       intro_3_html: |
         The cartography in our map tiles, and our documentation, are
-        licensed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative 
+        licensed under the <a href="http://creativecommons.org/licenses/by-sa/2.0/">Creative
         Commons Attribution-ShareAlike 2.0</a> license (CC-BY-SA).
       credit_title_html: How to credit OpenStreetMap
       credit_1_html: |
-        We require that you use the credit &ldquo;&copy; OpenStreetMap 
+        We require that you use the credit &ldquo;&copy; OpenStreetMap
         contributors&rdquo;.
       credit_2_html: |
-        You must also make it clear that the data is available under the Open 
-        Database License, and if using our map tiles, that the cartography is 
-        licensed as CC-BY-SA. You may do this by linking to 
-        <a href="http://www.openstreetmap.org/copyright">this copyright page</a>. 
-        Alternatively, and as a requirement if you are distributing OSM in a 
-        data form, you can name and link directly to the license(s). In media 
-        where links are not possible (e.g. printed works), we suggest you 
-        direct your readers to openstreetmap.org (perhaps by expanding 
-        'OpenStreetMap' to this full address), to opendatacommons.org, and 
+        You must also make it clear that the data is available under the Open
+        Database License, and if using our map tiles, that the cartography is
+        licensed as CC-BY-SA. You may do this by linking to
+        <a href="http://www.openstreetmap.org/copyright">this copyright page</a>.
+        Alternatively, and as a requirement if you are distributing OSM in a
+        data form, you can name and link directly to the license(s). In media
+        where links are not possible (e.g. printed works), we suggest you
+        direct your readers to openstreetmap.org (perhaps by expanding
+        'OpenStreetMap' to this full address), to opendatacommons.org, and
         if relevant, to creativecommons.org.
       more_title_html: Finding out more
       more_1_html: |
@@ -1101,10 +1102,10 @@ en:
         copyrighted sources (e.g. Google Maps or printed maps) without
         explicit permission from the copyright holders.
       infringement_2_html: |
-        If you believe that copyrighted material has been inappropriately 
-        added to the OpenStreetMap database or this site, please refer 
-        to our <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">takedown 
-        procedure</a> or file directly at our 
+        If you believe that copyrighted material has been inappropriately
+        added to the OpenStreetMap database or this site, please refer
+        to our <a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">takedown
+        procedure</a> or file directly at our
         <a href="http://dmca.openstreetmap.org/">on-line filing page</a>.
   notifier:
     diary_comment_notification:
@@ -1289,6 +1290,7 @@ en:
       potlatch2_unsaved_changes: "You have unsaved changes. (To save in Potlatch 2, you should click save.)"
       no_iframe_support: "Your browser doesn't support HTML iframes, which are necessary for this feature."
     sidebar:
+      activities: Activities
       search_results: Search Results
       close: Close
     search:
@@ -1967,6 +1969,7 @@ en:
       edit_tooltip: Edit the map
       edit_disabled_tooltip: Zoom in to edit the map
       edit_zoom_alert: You must zoom in to edit the map
+      activity_tooltip: View activity for this area
       history_tooltip: View edits for this area
       history_disabled_tooltip: Zoom in to view edits for this area
       history_zoom_alert: You must zoom in to view edits for this area

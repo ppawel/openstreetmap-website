@@ -105,6 +105,14 @@
   <p><b><%= t 'user.view.spam score' %></b> <%= @this_user.spam_score %></p>
 <% end -%>
 
+<h3>Your activity</h3>
+
+<div id="activity_stream"></div>
+
+<% content_for :head do %>
+<%= javascript_include_tag "user_activity_stream" %>
+<% end %>
+
 <% if @user and @this_user.id == @user.id %>
   <% if @this_user.home_lat.nil? or @this_user.home_lon.nil? %>
     <div id="map" class="user_map">

@@ -13,8 +13,8 @@
     <div id='top-bar'>
       <span id="greeting">
          <% if @user and @user.id %>
-           <span id="full-greeting"><%= raw(t 'layouts.welcome_user', :user_link => (link_to h(@user.display_name), user_path(:display_name => @user.display_name), :title => t('layouts.welcome_user_link_tooltip'))) %></span> 
-           <span id="small-greeting"><%= link_to t('layouts.welcome_user_link_tooltip'), user_path(:display_name => @user.display_name) %></span> | 
+           <span id="full-greeting"><%= raw(t 'layouts.welcome_user', :user_link => (link_to h(@user.display_name), user_path(:display_name => @user.display_name), :title => t('layouts.welcome_user_link_tooltip'))) %></span>
+           <span id="small-greeting"><%= link_to t('layouts.welcome_user_link_tooltip'), user_path(:display_name => @user.display_name) %></span> |
            <%= yield :greeting %>
            <%= render :partial => "layouts/inbox" %> |
            <%= link_to t('layouts.logout'), logout_path(:session => request.session_options[:id], :referer => request.fullpath), {:id => 'logoutanchor', :title => t('layouts.logout_tooltip')}%>
@@ -34,6 +34,11 @@
           :title => t('javascripts.site.edit_tooltip'),
           :data => { :minzoom => 13, :editor => preferred_editor },
           :class => 'geolink llz object disabled'
+        } %></li>
+        <li><%= link_to t('layouts.activity'), '', {
+          :id => 'activityanchor',
+          :title => t('javascripts.site.activity_tooltip'),
+          :class => 'geolink bbox'
         } %></li>
         <li><%= link_to t('layouts.history'), browse_changesets_path, {
           :id => 'historyanchor',

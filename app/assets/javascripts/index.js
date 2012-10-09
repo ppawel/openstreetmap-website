@@ -137,4 +137,26 @@ $(document).ready(function () {
   if ($("#query").val()) {
     $("#search_form").submit();
   }
+
+  // Setup Activity tab.
+
+  function activityTabClickHandler(event) {
+    var args = getArgs(this.href);
+    var bbox = args.bbox;
+
+    openSidebar({title: I18n.t('site.sidebar.activities')});
+
+    $.ajax({
+      crossDomain: true,
+      url: 'http://localhost:3333/activities?bbox=' + bbox + '&format=html',
+
+      success: function(data, status, xhr) {
+        $('#sidebar_content').html(data);
+      }
+    });
+
+    return false;
+  }
+
+  $("a[id=activityanchor]").click(activityTabClickHandler);
 });
