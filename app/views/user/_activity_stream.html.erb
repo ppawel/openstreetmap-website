@@ -3,16 +3,31 @@
 $(document).ready(function () {
     $.ajax({
       crossDomain: true,
-      url: OSM.ACTIVITY_SERVER_URL + '/activities?user_id=<%= @this_user.id %>&format=html',
+      url: OSM.ACTIVITY_SERVER_URL + '/activities?user_id=<%= @this_user.id %>&format=json',
 
       success: function(data, status, xhr) {
-        $('#activity_stream').html(data);
+        $("#activity_stream").html($("#activityStreamTemplate").render(data));
       }
     });
 });
 </script>
+<%= javascript_include_tag "jsrender" %>
 <% end %>
 
-<h3>Your activity</h3>
+<h3>Activity</h3>
 
 <div id="activity_stream"></div>
+
+<script id="activityStreamTemplate" type="text/x-jsrender">
+<ul>
+{{for items}}
+  <li>
+    <a href="/user/{{:actor.displayName}}">{{:actor.displayName}}</a> created changeset
+    <a href="/browse/changeset/{{:object.id}}">{{:object.id}}</a>
+    <span class="activitystream-created">({{:content}})</span>
+    <br /><br />
+    <a href="">comment</a> | <a href="">send message</a>&nbsp;&nbsp;<span class="activitystream-created">{{:published}}</span>
+  </li>
+{{/for}}
+</ul>
+</script>

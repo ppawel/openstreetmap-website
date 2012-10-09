@@ -1,6 +1,7 @@
 //= require index/browse
 //= require index/export
 //= require index/key
+//= require jsrender
 
 $(document).ready(function () {
   var marker;
@@ -143,10 +144,10 @@ $(document).ready(function () {
   function loadActivitiesForBbox(bbox) {
     $.ajax({
       crossDomain: true,
-      url: OSM.ACTIVITY_SERVER_URL + '/activities?bbox=' + bbox + '&format=html',
+      url: OSM.ACTIVITY_SERVER_URL + '/activities?bbox=' + bbox + '&format=json',
 
       success: function(data, status, xhr) {
-        $('#sidebar_content').html(data);
+        $("#sidebar_content").html($("#activityStreamTemplate").render(data));
       }
     });
   }

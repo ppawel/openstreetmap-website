@@ -1,0 +1,15 @@
+<script id="activityStreamTemplate" type="text/x-jsrender">
+<div id="activity_stream">
+<ul>
+{{for items}}
+  <li>
+    <a href="/user/{{:actor.displayName}}">{{:actor.displayName}}</a> created changeset
+    <a href="/browse/changeset/{{:object.id}}">{{:object.id}}</a>
+    <span class="activitystream-created">({{:content}})</span>
+    <br /><br />
+    <a href="">comment</a> | <a href="">send message</a>&nbsp;&nbsp;<span class="activitystream-created">{{:published}}</span>
+  </li>
+{{/for}}
+</ul>
+</div>
+</script>

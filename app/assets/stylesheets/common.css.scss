@@ -966,21 +966,21 @@ p#contributorGuidance {
   margin: auto 5%
 }
 
-.activitystream-actions {
+.activity_stream-actions {
   float: right;
   padding: 5px;
 }
 
-.activitystream-item {
+#activity_stream {
   padding: 0; margin: 0;
 }
 
-.activitystream-item ul {
+#activity_stream ul {
   list-style-type: none;
   padding: 0; margin: 0;
 }
 
-.activitystream-item li {
+#activity_stream li {
   list-style-type: none !important;
   padding: 10px !important;
   margin: 7px !important;
