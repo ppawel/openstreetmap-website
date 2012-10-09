@@ -1,0 +1,18 @@
+<% content_for :head do %>
+<script language="javascript">
+$(document).ready(function () {
+    $.ajax({
+      crossDomain: true,
+      url: OSM.ACTIVITY_SERVER_URL + '/activities?user_id=<%= @this_user.id %>&format=html',
+
+      success: function(data, status, xhr) {
+        $('#activity_stream').html(data);
+      }
+    });
+});
+</script>
+<% end %>
+
+<h3>Your activity</h3>
+
+<div id="activity_stream"></div>

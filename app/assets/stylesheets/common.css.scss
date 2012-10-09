@@ -966,20 +966,30 @@ p#contributorGuidance {
   margin: auto 5%
 }
 
+.activitystream-actions {
+  float: right;
+  padding: 5px;
+}
+
+.activitystream-item {
+  padding: 0; margin: 0;
+}
+
 .activitystream-item ul {
-          list-style-type: none;
-          padding: 0; margin: 0;
-  }
+  list-style-type: none;
+  padding: 0; margin: 0;
+}
 
-  .activitystream-item li {
-          list-style-type: none !important;
-          padding: 5px 0 !important;
-          margin: 0 !important;
-  }
+.activitystream-item li {
+  list-style-type: none !important;
+  padding: 10px !important;
+  margin: 7px !important;
+  background: #eeeeee;
+}
 
-  .activitystream-created {
-        color: #999;
-        font-size: 0.9em;
+.activitystream-created {
+  color: #999;
+  font-size: 0.9em;
 }
 
 /* Rules for the user map */

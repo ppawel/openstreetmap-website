@@ -140,21 +140,22 @@ $(document).ready(function () {
 
   // Setup Activity tab.
 
-  function activityTabClickHandler(event) {
-    var args = getArgs(this.href);
-    var bbox = args.bbox;
-
-    openSidebar({title: I18n.t('site.sidebar.activities')});
-
+  function loadActivitiesForBbox(bbox) {
     $.ajax({
       crossDomain: true,
-      url: 'http://localhost:3333/activities?bbox=' + bbox + '&format=html',
+      url: OSM.ACTIVITY_SERVER_URL + '/activities?bbox=' + bbox + '&format=html',
 
       success: function(data, status, xhr) {
         $('#sidebar_content').html(data);
       }
     });
+  }
 
+  function activityTabClickHandler(event) {
+    var args = getArgs(this.href);
+    var bbox = args.bbox;
+    openSidebar({title: I18n.t('site.sidebar.activities')});
+    loadActivitiesForBbox(bbox);
     return false;
   }
 

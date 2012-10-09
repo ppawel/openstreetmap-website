@@ -4,9 +4,10 @@ OSM = {
   PIWIK_SITE:       <%= PIWIK_SITE.to_json %>,
 <% end %>
 
-  MAX_REQUEST_AREA: <%= MAX_REQUEST_AREA.to_json %>,
-  SERVER_URL:       <%= SERVER_URL.to_json %>,
-  API_VERSION:      <%= API_VERSION.to_json %>,
+  MAX_REQUEST_AREA:    <%= MAX_REQUEST_AREA.to_json %>,
+  SERVER_URL:          <%= SERVER_URL.to_json %>,
+  ACTIVITY_SERVER_URL: <%= ACTIVITY_SERVER_URL.to_json %>,
+  API_VERSION:         <%= API_VERSION.to_json %>,
 
   apiUrl: function (object) {
     var url = "/api/" + OSM.API_VERSION + "/" + object.type + "/" + object.id;
