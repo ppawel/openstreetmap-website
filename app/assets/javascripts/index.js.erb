@@ -126,6 +126,8 @@ $(document).ready(function () {
   function loadActivitiesForCurrentBbox() {
     var bbox = unproj(map.getExtent());
 
+    $("#sidebar_content").html('<%= image_tag 'searching.gif' %>');
+
     $.ajax({
       crossDomain: true,
       dataType: 'json',
