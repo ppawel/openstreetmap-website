@@ -128,6 +128,7 @@ $(document).ready(function () {
 
     $.ajax({
       crossDomain: true,
+      dataType: 'json',
       url: OSM.ACTIVITY_SERVER_URL + '/activities?bbox=' + bbox + '&format=json',
 
       success: function(data, status, xhr) {
