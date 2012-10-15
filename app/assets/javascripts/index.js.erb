@@ -148,6 +148,7 @@ $(document).ready(function () {
 
       success: function(data, status, xhr) {
         $("#sidebar_content").html($("#activityStreamTemplate").render(data));
+        $("#activity_stream_rss_link").attr('href', '<%= ACTIVITY_SERVER_URL %>activities?format=rss&bbox=' + bbox);
       }
     });
   }
