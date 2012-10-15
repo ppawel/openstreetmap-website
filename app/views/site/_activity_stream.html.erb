@@ -1,11 +1,13 @@
 <script id="activityStreamTemplate" type="text/x-jsrender">
 <div id="activity_stream">
+<button>Reload</button> <input type="checkbox" id="activity_stream_autoreload"> <label for="activity_stream_autoreload">Automatically load for area displayed on the map</label>
 <ul>
 {{for items}}
   <li>
     <a href="/user/{{:actor.displayName}}">{{:actor.displayName}}</a> {{:content}}
     <br /><br />
-    <a href="">comment</a> | <a href="">send message</a> | <a href="/browse/changeset/{{:object.id}}">see changeset</a>&nbsp;&nbsp;<span class="activitystream-created">{{:published}}</span>
+    <a href="">comment</a> | <a href="">send message</a> | <a href="">zoom</a> |
+    <a href="/browse/changeset/{{:object.id}}">see changeset</a>&nbsp;&nbsp;<span class="activitystream-created">{{:published}}</span>
   </li>
 {{/for}}
 </ul>
