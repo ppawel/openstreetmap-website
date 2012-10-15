@@ -123,7 +123,9 @@ $(document).ready(function () {
 
   // Setup Activity tab.
 
-  function loadActivitiesForBbox(bbox) {
+  function loadActivitiesForCurrentBbox() {
+    var bbox = unproj(map.getExtent());
+
     $.ajax({
       crossDomain: true,
       url: OSM.ACTIVITY_SERVER_URL + '/activities?bbox=' + bbox + '&format=json',
@@ -131,17 +133,18 @@ $(document).ready(function () {
       success: function(data, status, xhr) {
         $("#sidebar_content").html($("#activityStreamTemplate").render(data));
         $("#activity_stream_rss_link").attr('href', '<%= ACTIVITY_SERVER_URL %>activities?format=rss&bbox=' + bbox);
+        $("button[id=activity_stream_reload_button]").on("click", loadActivitiesForCurrentBbox);
       }
     });
-  }
 
-  function activityTabClickHandler(event) {
-    var args = getArgs(this.href);
-    var bbox = args.bbox;
-    openSidebar({title: I18n.t('site.sidebar.activities')});
-    loadActivitiesForBbox(bbox);
     return false;
   }
 
-  $("a[id=activityanchor]").click(activityTabClickHandler);
+  function activityTabClickHandler(event) {
+    openSidebar({title: I18n.t('site.sidebar.activities')});
+    loadActivitiesForCurrentBbox();
+    return false;
+  }
+
+  $("a[id=activityanchor]").on("click", activityTabClickHandler);
 });
