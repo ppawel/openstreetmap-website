@@ -124,7 +124,7 @@ $(document).ready(function () {
   // Setup Activity tab.
 
   function loadActivitiesForCurrentBbox() {
-    var bbox = unproj(map.getExtent());
+    var bbox = unproj(map.getExtent()).toBBOX(8, true);
 
     $("#sidebar_content").html('<%= image_tag 'searching.gif' %>');
 
@@ -151,3 +151,10 @@ $(document).ready(function () {
 
   $("a[id=activityanchor]").on("click", activityTabClickHandler);
 });
+
+function highlightActivity(bbox_text) {
+  var geom = OpenLayers.Bounds.fromString(bbox_text, true);
+  map.zoomToExtent(proj(geom));
+  addBoxToMap(geom, 'test', true);
+  return false;
+}
