@@ -52,6 +52,14 @@ var map;
 
 var layers = [
   {
+    klass: L.TileLayer.Kothic,
+    attribution: "",
+    keyid: "kothic",
+    layerCode: "K",
+    name: I18n.t("javascripts.map.base.kothic"),
+    url: "http://localhost:3001/api/0.1/kothic/{z}/{x}/{y}.js"
+  },
+  {
     klass: L.OSM.Mapnik,
     attribution: "",
     keyid: "mapnik",

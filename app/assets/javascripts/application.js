@@ -9,6 +9,9 @@
 //= require leaflet.locationfilter
 //= require leaflet.pan
 //= require leaflet.zoom
+//= require kothic
+//= require kothic-leaflet
+//= require osmosnimki
 //= require i18n/translations
 //= require osm
 //= require piwik

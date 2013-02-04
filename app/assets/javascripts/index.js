@@ -129,6 +129,10 @@ $(document).ready(function () {
     $("#search_form").submit();
   }
 
+  // Init the Kothic JS layer.
+
+  //MapCSS.preloadSpriteImage("osmosnimki-maps", "http://osmosnimki.ru/leaf/icons/osmosnimki.png");
+
   // Focus the search field for browsers that don't support
   // the HTML5 'autofocus' attribute
   if (!("autofocus" in document.createElement("input"))) {
