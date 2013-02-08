@@ -130,8 +130,7 @@ $(document).ready(function () {
   }
 
   // Init the Kothic JS layer.
-
-  //MapCSS.preloadSpriteImage("osmosnimki-maps", "http://osmosnimki.ru/leaf/icons/osmosnimki.png");
+  MapCSS.preloadSpriteImage("osmosnimki-maps", "/assets/osmosnimki.png");
 
   // Focus the search field for browsers that don't support
   // the HTML5 'autofocus' attribute
