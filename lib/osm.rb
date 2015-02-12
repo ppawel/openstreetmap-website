@@ -24,6 +24,17 @@ module OSM
     end
   end
 
+  # Raised when access is denied.
+  class APIAccessDenied < RuntimeError
+    def status
+      :forbidden
+    end
+
+    def to_s
+      "Access denied"
+    end
+  end
+
   # Raised when an API object is not found.
   class APINotFoundError < APIError
     def status
@@ -92,6 +103,57 @@ module OSM
 
     def to_s
       "The changeset #{@changeset.id} was closed at #{@changeset.closed_at}"
+    end
+  end
+
+  # Raised when the changeset provided is not yet closed
+  class APIChangesetNotYetClosedError < APIError
+    def initialize(changeset)
+      @changeset = changeset
+    end
+
+    attr_reader :changeset
+
+    def status
+      :conflict
+    end
+
+    def to_s
+      "The changeset #{@changeset.id} is not yet closed."
+    end
+  end
+
+  # Raised when a user is already subscribed to the changeset
+  class APIChangesetAlreadySubscribedError < APIError
+    def initialize(changeset)
+      @changeset = changeset
+    end
+
+    attr_reader :changeset
+
+    def status
+      :conflict
+    end
+
+    def to_s
+      "You are already subscribed to changeset #{@changeset.id}."
+    end
+  end
+
+  # Raised when a user is not subscribed to the changeset
+  class APIChangesetNotSubscribedError < APIError
+    def initialize(changeset)
+      @changeset = changeset
+    end
+
+    attr_reader :changeset
+
+    def status
+      :not_found
+    end
+
+    def to_s
+      "You are not subscribed to changeset #{@changeset.id}."
     end
   end
 
@@ -399,7 +461,7 @@ module OSM
 
       begin
         lonradius = 2 * asin(sqrt(sin(radius / 6372.795 / 2) ** 2 / cos(@lat) ** 2))
-      rescue Errno::EDOM
+      rescue Errno::EDOM, Math::DomainError
         lonradius = PI
       end
 

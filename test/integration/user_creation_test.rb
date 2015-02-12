@@ -1,4 +1,4 @@
-require File.dirname(__FILE__) + '/../test_helper'
+require 'test_helper'
 
 class UserCreationTest < ActionDispatch::IntegrationTest
   fixtures :users
@@ -16,20 +16,20 @@ class UserCreationTest < ActionDispatch::IntegrationTest
   end
 
   def test_user_create_submit_duplicate_email
-    I18n.available_locales.each do |localer|
+    I18n.available_locales.each do |locale|
       dup_email = users(:public_user).email
-      display_name = "#{localer.to_s}_new_tester"
+      display_name = "#{locale.to_s}_new_tester"
       assert_difference('User.count', 0) do
         assert_difference('ActionMailer::Base.deliveries.size', 0) do
           post '/user/new',
             {:user => { :email => dup_email, :email_confirmation => dup_email, :display_name => display_name, :pass_crypt => "testtest", :pass_crypt_confirmation => "testtest"}},
-            {"HTTP_ACCEPT_LANGUAGE" => localer.to_s}
+            {"HTTP_ACCEPT_LANGUAGE" => locale.to_s}
         end
       end
       assert_response :success
       assert_template 'user/new'
-      assert_equal response.headers['Content-Language'][0..1], localer.to_s[0..1] unless localer == :root
-      assert_select "form > fieldset > div.form-row > div.field_with_errors > input#user_email"
+      assert_equal response.headers['Content-Language'][0..1], locale.to_s[0..1] unless locale == :root
+      assert_select "form > fieldset > div.form-row > input.field_with_errors#user_email"
       assert_no_missing_translations
     end
   end
@@ -47,7 +47,7 @@ class UserCreationTest < ActionDispatch::IntegrationTest
       end
       assert_response :success
       assert_template 'user/new'
-      assert_select "form > fieldset > div.form-row > div.field_with_errors > input#user_display_name"
+      assert_select "form > fieldset > div.form-row > input.field_with_errors#user_display_name"
       assert_no_missing_translations
     end
   end
@@ -135,7 +135,7 @@ class UserCreationTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_template 'user/confirm'
 
-    post "user/#{display_name}/confirm", { :confirm_string => confirm_string }
+    post "/user/#{display_name}/confirm", { :confirm_string => confirm_string }
     assert_response :redirect
     follow_redirect!
     assert_response :success

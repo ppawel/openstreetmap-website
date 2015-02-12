@@ -53,6 +53,9 @@ class NotesController < ApplicationController
   ##
   # Create a new note
   def create
+    # Check the ACLs
+    raise OSM::APIAccessDenied if Acl.no_note_comment(request.remote_ip)
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No lat was given") unless params[:lat]
     raise OSM::APIBadUserInput.new("No lon was given") unless params[:lon]
@@ -86,6 +89,9 @@ class NotesController < ApplicationController
   ##
   # Add a comment to an existing note
   def comment
+    # Check the ACLs
+    raise OSM::APIAccessDenied if Acl.no_note_comment(request.remote_ip)
+
     # Check the arguments are sane
     raise OSM::APIBadUserInput.new("No id was given") unless params[:id]
     raise OSM::APIBadUserInput.new("No text was given") if params[:text].blank?
@@ -255,7 +261,7 @@ class NotesController < ApplicationController
 
     # Get any conditions that need to be applied
     @notes = closed_condition(Note.all)
-    @notes = @notes.joins(:comments).where("note_comments.body ~ ?", params[:q])
+    @notes = @notes.joins(:comments).where("to_tsvector('english', note_comments.body) @@ plainto_tsquery('english', ?)", params[:q])
 
     # Find the notes we want to return
     @notes = @notes.order("updated_at DESC").limit(result_limit).preload(:comments)
@@ -309,10 +315,10 @@ private
   # Get the maximum number of results to return
   def result_limit
     if params[:limit]
-      if params[:limit].to_i > 0 and params[:limit].to_i < 10000
+      if params[:limit].to_i > 0 and params[:limit].to_i <= 10000
         params[:limit].to_i
       else
-        raise OSM::APIBadUserInput.new("Note limit must be between 1 and 9999")
+        raise OSM::APIBadUserInput.new("Note limit must be between 1 and 10000")
       end
     else
       100
@@ -355,7 +361,7 @@ private
 
     note.comments.map { |c| c.author }.uniq.each do |user|
       if notify and user and user != @user
-        Notifier.note_comment_notification(comment, user).deliver
+        Notifier.note_comment_notification(comment, user).deliver_now
       end
     end
   end

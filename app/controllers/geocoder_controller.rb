@@ -1,6 +1,7 @@
 # coding: utf-8
 
 class GeocoderController < ApplicationController
+  require 'cgi'
   require 'uri'
   require 'net/http'
   require 'rexml/document'
@@ -16,7 +17,7 @@ class GeocoderController < ApplicationController
     if params[:lat] && params[:lon]
       @sources.push "latlon"
       @sources.push "osm_nominatim_reverse"
-      @sources.push "geonames_reverse"
+      @sources.push "geonames_reverse" if defined?(GEONAMES_USERNAME)
     elsif params[:query].match(/^\d{5}(-\d{4})?$/)
       @sources.push "us_postcode"
       @sources.push "osm_nominatim"
@@ -140,20 +141,25 @@ class GeocoderController < ApplicationController
 
     # get objects to excude
     if params[:exclude]
-      exclude = "&exclude_place_ids=#{params[:exclude].join(',')}"
+      exclude = "&exclude_place_ids=#{params[:exclude]}"
     end
 
     # ask nominatim
     response = fetch_xml("#{NOMINATIM_URL}search?format=xml&q=#{escape_query(query)}#{viewbox}#{exclude}&accept-language=#{http_accept_language.user_preferred_languages.join(',')}")
 
+    # extract the results from the response
+    results =  response.elements["searchresults"]
+
+    # extract parameters from more_url
+    more_url_params = CGI.parse(URI.parse(results.attributes["more_url"]).query)
+
     # create result array
     @results = Array.new
 
     # create parameter hash for "more results" link
-    @more_params = params.reverse_merge({ :exclude => [] })
-
-    # extract the results from the response
-    results =  response.elements["searchresults"]
+    @more_params = params.merge({
+      :exclude => more_url_params["exclude_place_ids"].first
+    })
 
     # parse the response
     results.elements.each("place") do |place|
@@ -181,7 +187,6 @@ class GeocoderController < ApplicationController
                      :min_lon => min_lon, :max_lon => max_lon,
                      :prefix => prefix, :name => name,
                      :type => object_type, :id => object_id})
-      @more_params[:exclude].push(place.attributes["place_id"].to_s)
     end
 
     render :action => "results"
@@ -194,11 +199,14 @@ class GeocoderController < ApplicationController
     # get query parameters
     query = params[:query]
 
+    # get preferred language
+    lang = I18n.locale.to_s.split("-").first
+
     # create result array
     @results = Array.new
 
     # ask geonames.org
-    response = fetch_xml("http://api.geonames.org/search?q=#{escape_query(query)}&maxRows=20&username=#{GEONAMES_USERNAME}")
+    response = fetch_xml("http://api.geonames.org/search?q=#{escape_query(query)}&lang=#{lang}&maxRows=20&username=#{GEONAMES_USERNAME}")
 
     # parse the response
     response.elements.each("geonames/geoname") do |geoname|
@@ -255,11 +263,14 @@ class GeocoderController < ApplicationController
     lat = params[:lat]
     lon = params[:lon]
 
+    # get preferred language
+    lang = I18n.locale.to_s.split("-").first
+
     # create result array
     @results = Array.new
 
     # ask geonames.org
-    response = fetch_xml("http://ws.geonames.org/countrySubdivision?lat=#{lat}&lng=#{lon}")
+    response = fetch_xml("http://api.geonames.org/countrySubdivision?lat=#{lat}&lng=#{lon}&lang=#{lang}&username=#{GEONAMES_USERNAME}")
 
     # parse the response
     response.elements.each("geonames/countrySubdivision") do |geoname|

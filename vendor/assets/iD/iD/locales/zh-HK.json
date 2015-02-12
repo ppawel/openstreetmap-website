@@ -95,7 +95,6 @@
         },
         "delete": {
             "title": "刪",
-            "description": "地圖度拎走佢。",
             "annotation": {
                 "point": "刪咗處。",
                 "vertex": "道度刪咗節。",
@@ -260,7 +259,6 @@
         "percent_brightness": "{opacity}% 光",
         "none": "無",
         "custom": "自訂",
-        "custom_prompt": "入個格模。有效字符係{z}、{x}、{y}對應Z/X/Y制及{u}對應四分格制。",
         "fix_misalignment": "校正對位誤差",
         "reset": "重設"
     },
@@ -327,10 +325,8 @@
     },
     "help": {
         "title": "指南",
-        "help": "# 指南\n\n爾個編器，係爲 [公家街圖](http://www.openstreetmap.org/)而做。 有世界地圖，任用亦改得。你可以用佢，喺你處加嘢改嘢。如此一來，裏面嘅料，人人可以任用。\n\n邊個用公家街圖，都見得到你整嘅地圖。要改得到，就要開定個\n[免費公家街圖戶口](https://www.openstreetmap.org/user/new).\n\n[iD editor](http://ideditor.com/) 係合作而成， [程式碼放喺 GitHub](https://github.com/systemed/iD).\n",
         "editing_saving": "# 改同記\n\n爾個程式，係上網用嘅，你用到佢，就係喺你上緊嘅網站上面。\n\n### 㨂地貌\n\n㨂地圖地貌，好似路，名勝，就喺地圖撳佢一下。咁佢就會顯眼，同埋有一大欄，講佢明細。亦有選單，你可以點地貌。\n\n要揀多個一種，就撳實【Shift】掣先。一係跟手撳落地貌，揀你想揀。一係拖個長方形出來，包住佢嘅點都着咗。\n\n### 記修改\n\n你修改路、屋宇及地方之時，爾啲修改只喺你部電腦上面，直至你記上地圖電腦。唔好擔心，若你出錯，你可以撳還原掣還原，重做掣重做。\n\n撳【記低】就完成一組修改。畀個例，你畫完個鎮，又會去畫另一度。咁你有機會去校閱你改過乜。同埋，若然有乜改得唔妥，程式亦會有用提議同警告。\n\n若然樣樣都妥當，咁你就打啲解釋，講下你改過乜，之後【記低】送修改上 [OpenStreetMap.org](http://www.openstreetmap.org/)。如此一來，人人都會睇到，等人再以此建立同改善。\n\n若你一次改唔晒，你都可以閂咗程式，下次返來，用同一部電腦同瀏覽器，程式會畀機會你囘復修改。\n",
         "roads": "# 路\n\n用個程式，你開得，整得，刪得啲路。路有幾種，徑、公路、山徑、單車徑等等，乜嘢相交一段都要畫面出來。\n\n### 揀\n\n撳一下條路，就揀到。個外形會見得明顯，亦有架生仔選單，外加邊註欄有多啲路嘅資料。\n\n### 改\n\n你耐不耐見到條路，同背景相，或全球定位系統行縱，並唔一致。你要調較到佢哋啱位。\n\n首先撳一下，你想改嗰條路。咁條路就會特別顯眼，同埋有一點點畀你畀拉到啱位。若你想加多幾點，更加仔細，就喺條路上面，無節嘅地方，快撳兩下，咁就會開多一節。\n\n若然條路要駁去其他路，之但係無駁妥，咁你就拖住一點，拉到其他路，整到聯埋。地圖來講，駁通啲路係咁緊要，同埋駕車搵路亦必須。\n\n你亦可以用【搬】爾個架生，或撳快掣【M】，一次過搬成條路，再撳多下，就記好搬動。\n\n### 刪\n\n若成條路都唔啱，你亦要望下衞星相，以及最好親身確認，佢真係唔喺度，你就可以刪咗佢，卽係由地圖度搬走。小心啲刪走地貌，同其他改法一樣，有時地貌係人人都見到，但係衞星相過晒時，新路未必見。\n\n你刪條路，就撳佢一下，揀咗佢。跟住撳垃圾筒公仔，或者撳快掣【Delete】。\n\n### 開新\n\n要搵地方，緊係要有條路，係咪？去程式左上角，咁住【綫】個公仔，或者撳快掣【2】，就開始畫綫。\n\n地圖度，撳住路頭個位開始畫。若然條路由原路分出，就由原路上面路口位，撳一下開始。\n\n撳嘅點，應該人係跟實條路，跟䘙星相，或跟全球定位系統行蹤。若果你條路，會橫過另一條，你就喺路口位，撳落另一條路上，就起咗個交叉點。你要畫完，就快撳兩下。又或者咁鍵盤【Return】或【Enter】掣。\n",
-        "gps": "# 全球定位系統\n\n數據取自全球定位系統，係公家街圖至可靠來源。爾個造圖程式，用到本機行蹤，卽放你電腦嘅【.gpx】檔案。你收集全球定位系統行蹤，取自智能電話程式，或者個人全球定位系統儀。\n\n點去用全球定位系統測量，睇下[用全球定位系統測量](http://learnosm.org/en/beginner/using-gps/).\n\n用GPX途徑製圖，拖GPX檔案落造圖程式。若然讀得明，佢會加入地圖，用鮮綠綫顯現。喺右邊，撳落【背景設定】選單。咁就開得，閂得，放大縮細新嘅GPX層。\n\n爾個GPX途徑，唔會直上公家街圖，最好用法，就係用佢製圖。按此加新地貌，亦可[傳上公家街圖](http://www.openstreetmap.org/trace/create)以作其他用途。\n",
         "imagery": "# 相\n\n航空相係地圖要源。佢哋飛機飛過，衞星望落等組合。網上有任用來源，可供使用。就喺右邊，【背景設定】之內。\n\n程式預先已有 [兵地圖](http://www.bing.com/maps/) 䘙星相層。你放大縮細去某啲地方，就有其他可用。某幾國，如美國、法國、丹麥等，國內某啲地方，有極精細嘅相。\n\n相有時同地圖資料有差距，爾個係供相者出錯。若你睇到多多路與背景移咗位，就唔好郁住。將啲相校好個位，同地圖資料吻合。要咁做，就去背景設定，撳【校正對位誤差】校好咗先。\n",
         "addresses": "# 地埗\n\n地埗，對地圖好有用嘅資料。\n\n雖則地埗通常係街嘅一部份，不過喺公家街圖入面，會記爲沿街屋宇及地方屬性。\n\n你可以加地埗落地方，畫成屋宇界圖，亦可以畫成單處。最好來源，就係視身街一轉，或者靠個人知識。之但係，同其他地貌一樣，禁止抄其他商用來源，包括谷歌地圖。\n",
         "inspector": "# 用明細一覽\n\n明細一覽係全版左邊嘅部份，畀你改個地貌嘅詳細資料。\n\n### 揀地貌\n\n無論你加處、綫或者範圍，你要揀係乜地貌，如公路定住宅路，超級市場定茶座。明細一覽上面有掣，揀你要嘅地貌，同埋你亦可以格中，一邊打一邊搵。\n\n個個地貌製，右邊【i】字，撳落有細解。撳落個掣度就揀到地貌。\n\n### 用表及改籤\n\n你㨂完地貌，或者你㨂嘅，早已入咗地貌，咁明細一覽，就有一欄欄，講地貌詳細資料，例如名同地埗咁。\n\n欄下面，你會見到啲細公仔，係用來加其他明細，好似 [維基百科](http://www.wikipedia.org/) 資料、行唔行到輪輢等等。\n\n明細一覽個底，撳【所有籤】，就可以隨意加其他籤落去。\n[籤料](http://taginfo.openstreetmap.org/) 係極有用嘅地方知道唔通籤嘅配搭。\n\n你喺明細一覽改嘅，都會自動送上地圖。你亦可以還原修改，只要咁下【還原】掣。\n",
@@ -360,7 +356,6 @@
         },
         "areas": {
             "title": "範圍",
-            "add": "範圍係更祥細講地貌。佢畀埋地貌界綫。處出地嘅地貌，範圍多數都用到，做到範圍就做範圍。**撳住範圍掣，開新範圍。**",
             "corner": "要畫範圍，就用節來勾出邊界，包住範圍。**擺開始一節，喺遊樂場一角。**",
             "place": "畫範圍，就要擺多啲節。要完成範圍，就欽返頭嗰節。**畫個範圍畀遊樂場。**",
             "search": "**搵【{name}】。**",
@@ -390,6 +385,9 @@
         "categories": {
             "category-building": {
                 "name": "屋宇"
+            },
+            "category-golf": {
+                "name": "哥夫球"
             },
             "category-landuse": {
                 "name": "用地"
@@ -457,11 +455,8 @@
             "address": {
                 "label": "地埗",
                 "placeholders": {
-                    "housename": "屋名",
-                    "number": "一百二十三號",
                     "street": "街",
-                    "city": "城",
-                    "postcode": "郵政編號"
+                    "city": "城"
                 }
             },
             "admin_level": {
@@ -523,6 +518,9 @@
             "country": {
                 "label": "國"
             },
+            "covered": {
+                "label": "有蓋"
+            },
             "crossing": {
                 "label": "類"
             },
@@ -569,6 +567,14 @@
             "generator/type": {
                 "label": "類"
             },
+            "golf_hole": {
+                "label": "參攷",
+                "placeholder": "洞數（一到十八）"
+            },
+            "handicap": {
+                "label": "差點",
+                "placeholder": "1-18"
+            },
             "highway": {
                 "label": "類"
             },
@@ -583,6 +589,9 @@
             },
             "incline": {
                 "label": "斜"
+            },
+            "information": {
+                "label": "類"
             },
             "internet_access": {
                 "label": "用到互聯網",
@@ -650,6 +659,10 @@
             "operator": {
                 "label": "承辦商"
             },
+            "par": {
+                "label": "標準桿",
+                "placeholder": "3, 4, 5..."
+            },
             "park_ride": {
                 "label": "泊車轉乖"
             },
@@ -676,16 +689,7 @@
                 "label": "類"
             },
             "religion": {
-                "label": "宗敎",
-                "options": {
-                    "christian": "基督敎",
-                    "muslim": "囘敎",
-                    "buddhist": "佛敎",
-                    "jewish": "猶太敎",
-                    "hindu": "印度敎",
-                    "shinto": "神道敎",
-                    "taoist": "道敎"
-                }
+                "label": "宗敎"
             },
             "restriction": {
                 "label": "類"
@@ -695,9 +699,6 @@
             },
             "route_master": {
                 "label": "類"
-            },
-            "sac_scale": {
-                "label": "行徑難度"
             },
             "service": {
                 "label": "類"
@@ -742,14 +743,8 @@
             "towertype": {
                 "label": "塔類"
             },
-            "tracktype": {
-                "label": "類"
-            },
             "trail_visibility": {
                 "label": "徑明顯度"
-            },
-            "tree_type": {
-                "label": "類"
             },
             "vending": {
                 "label": "貨類"
@@ -772,9 +767,6 @@
             },
             "wikipedia": {
                 "label": "維基百科全書"
-            },
-            "wood": {
-                "label": "類"
             }
         },
         "presets": {
@@ -870,17 +862,9 @@
                 "name": "洗車舖",
                 "terms": "Car Wash,洗車,洗車店,洗車舖"
             },
-            "amenity/childcare": {
-                "name": "托兒所",
-                "terms": "Childcare,托兒所"
-            },
             "amenity/cinema": {
                 "name": "電影戲院",
                 "terms": "Cinema,戲院,電影,電影戲院,電影院"
-            },
-            "amenity/college": {
-                "name": "學院",
-                "terms": "College,大學,大專,學院,專上學院,專校,專科學院,書院,理工"
             },
             "amenity/courthouse": {
                 "name": "法庭",
@@ -913,14 +897,6 @@
             "amenity/grave_yard": {
                 "name": "墳地",
                 "terms": "Graveyard,墓地,墳地,墳場"
-            },
-            "amenity/hospital": {
-                "name": "醫院",
-                "terms": "Hospital,療養院,醫學中心,醫療院,醫院"
-            },
-            "amenity/kindergarten": {
-                "name": "幼稚園",
-                "terms": "Kindergarten,幼兒園,幼稚園,托兒所"
             },
             "amenity/library": {
                 "name": "圖書館",
@@ -978,13 +954,13 @@
                 "name": "郊野訪客處",
                 "terms": "Ranger Station,郊野訪客處,野郊訪客處"
             },
+            "amenity/recycling": {
+                "name": "囘收桶",
+                "terms": "Recycling,囘收桶,囘收箱,回收桶,回收箱"
+            },
             "amenity/restaurant": {
                 "name": "餐廳",
                 "terms": "Restaurant,茶樓,酒家,酒樓,飯店,飯館,餐廳,餐館"
-            },
-            "amenity/school": {
-                "name": "學校",
-                "terms": "School,中學,國中,國小,學校,小學,校區,校園,高中"
             },
             "amenity/shelter": {
                 "name": "天遮或亭",
@@ -1013,10 +989,6 @@
             "amenity/townhall": {
                 "name": "大會堂",
                 "terms": "Town Hall,大會堂,市政府,市政廳"
-            },
-            "amenity/university": {
-                "name": "大學",
-                "terms": "University,大學,大專"
             },
             "amenity/vending_machine": {
                 "name": "售賣機",
@@ -1114,10 +1086,6 @@
                 "name": "商業樓宇",
                 "terms": "Commercial Building,商業建築物,商業樓宇"
             },
-            "building/entrance": {
-                "name": "入口",
-                "terms": "Entrance,入口"
-            },
             "building/garage": {
                 "name": "車庫",
                 "terms": "Garage,車庫"
@@ -1154,10 +1122,6 @@
                 "name": "求助電話",
                 "terms": "Emergency Phone,求助電話,緊急電話"
             },
-            "entrance": {
-                "name": "入口",
-                "terms": "Entrance,入口"
-            },
             "footway/crossing": {
                 "name": "路口",
                 "terms": "Crossing,路口"
@@ -1165,6 +1129,38 @@
             "footway/sidewalk": {
                 "name": "行人路",
                 "terms": "Sidewalk,行人路"
+            },
+            "golf/bunker": {
+                "name": "沙坑",
+                "terms": "Sand Trap,沙坑"
+            },
+            "golf/fairway": {
+                "name": "球道",
+                "terms": "Fairway,球道"
+            },
+            "golf/green": {
+                "name": "菓嶺",
+                "terms": "Putting Green,果嶺,菓嶺"
+            },
+            "golf/hole": {
+                "name": "歌夫球洞",
+                "terms": "Golf Hole,歌夫球洞"
+            },
+            "golf/lateral_water_hazard": {
+                "name": "側面水障區",
+                "terms": "Lateral Water Hazard,側面水障區"
+            },
+            "golf/rough": {
+                "name": "深草區",
+                "terms": "Rough,深草區"
+            },
+            "golf/tee": {
+                "name": "發球區",
+                "terms": "Tee Box,發球區,開球區"
+            },
+            "golf/water_hazard": {
+                "name": "水障區",
+                "terms": "Water Hazard,水障區"
             },
             "highway": {
                 "name": "公路",
@@ -1201,10 +1197,6 @@
             "highway/motorway": {
                 "name": "高速公路",
                 "terms": "Motorway,高速公路"
-            },
-            "highway/motorway_junction": {
-                "name": "高速公路口",
-                "terms": "Motorway Junction,高速公路交匯處,高速公路口,高速公路連接點"
             },
             "highway/motorway_link": {
                 "name": "高速公路駁路",
@@ -1358,21 +1350,9 @@
                 "name": "墳場",
                 "terms": "Cemetery,墓地,墳場"
             },
-            "landuse/commercial": {
-                "name": "商地",
-                "terms": "Commercial,商地,商業區"
-            },
             "landuse/construction": {
                 "name": "地盤",
                 "terms": "Construction,地盤,建築工程,建築物"
-            },
-            "landuse/farm": {
-                "name": "農場",
-                "terms": "Farm,田,稻田,農地,農場,農田"
-            },
-            "landuse/farmland": {
-                "name": "耕地",
-                "terms": "Farmland,田地,耕地,農田"
             },
             "landuse/farmyard": {
                 "name": "地堂",
@@ -1386,10 +1366,6 @@
                 "name": "草地",
                 "terms": "Grass,草地"
             },
-            "landuse/industrial": {
-                "name": "工地",
-                "terms": "Industrial,工地,工業區"
-            },
             "landuse/meadow": {
                 "name": "牧地",
                 "terms": "Meadow,牧地,牧場"
@@ -1401,14 +1377,6 @@
             "landuse/quarry": {
                 "name": "石塘",
                 "terms": "Quarry,石塘,石礦場,礦場"
-            },
-            "landuse/residential": {
-                "name": "住",
-                "terms": "Residential,住,住宅區"
-            },
-            "landuse/retail": {
-                "name": "零售",
-                "terms": "Retail,零售"
             },
             "landuse/vineyard": {
                 "name": "葡萄園",
@@ -1482,10 +1450,6 @@
                 "name": "船排",
                 "terms": "Slipway,船排,船架滑道,船臺"
             },
-            "leisure/sports_center": {
-                "name": "體育館",
-                "terms": "Sports Center,體育,體育中心,體育館"
-            },
             "leisure/stadium": {
                 "name": "大體育館",
                 "terms": "Stadium,大體育館,體育,體育場"
@@ -1493,10 +1457,6 @@
             "leisure/swimming_pool": {
                 "name": "游水池",
                 "terms": "Swimming Pool,游水池,游泳池,遊泳池"
-            },
-            "leisure/track": {
-                "name": "賽車跑道",
-                "terms": "Race Track,賽車跑道"
             },
             "line": {
                 "name": "綫",
@@ -1553,10 +1513,6 @@
             "man_made/water_tower": {
                 "name": "水塔",
                 "terms": "Water Tower,水塔"
-            },
-            "man_made/water_well": {
-                "name": "井",
-                "terms": "Water well,井,水井"
             },
             "man_made/water_works": {
                 "name": "供水廠",
@@ -1898,10 +1854,6 @@
                 "name": "單車舖",
                 "terms": "Bicycle Shop,單車店,單車舖,自行車店"
             },
-            "shop/books": {
-                "name": "書局",
-                "terms": "Bookstore,書局,書店"
-            },
             "shop/boutique": {
                 "name": "時裝店",
                 "terms": "Boutique,時裝店,服飾店,精品店"
@@ -1934,10 +1886,6 @@
                 "name": "電腦舖",
                 "terms": "Computer Store,電腦店,電腦舖"
             },
-            "shop/confectionery": {
-                "name": "糖菓舖",
-                "terms": "Confectionery,甜點店,糖菓舖"
-            },
             "shop/convenience": {
                 "name": "便利店",
                 "terms": "Convenience Store,便利店"
@@ -1953,10 +1901,6 @@
             "shop/doityourself": {
                 "name": "自組舖",
                 "terms": "DIY Store,DIY商店,自組舖"
-            },
-            "shop/dry_cleaning": {
-                "name": "乾洗",
-                "terms": "Dry Cleaners,乾洗,乾洗店"
             },
             "shop/electronics": {
                 "name": "電子舖",
@@ -2006,10 +1950,6 @@
                 "name": "珠寶金行",
                 "terms": "Jeweler,珠寶店,珠寶舖,珠寶金行,首飾店,首飾舖"
             },
-            "shop/kiosk": {
-                "name": "小賣部、報紙檔、煙仔檔等",
-                "terms": "Kiosk,售貨亭,售賣亭,報刊亭,報攤,小賣部,書報攤"
-            },
             "shop/laundry": {
                 "name": "洗衣舖",
                 "terms": "Laundry,洗衣店,洗衣舖"
@@ -2034,17 +1974,9 @@
                 "name": "唱片舖",
                 "terms": "Music Store,唱片舖,音樂店"
             },
-            "shop/newsagent": {
-                "name": "報紙檔（有舖）",
-                "terms": "Newsagent,報攤,報紙檔,書報攤"
-            },
             "shop/optician": {
                 "name": "眼鏡鋪",
                 "terms": "Optician,眼鏡店,眼鏡行,眼鏡鋪"
-            },
-            "shop/outdoor": {
-                "name": "行山舖",
-                "terms": "Outdoor Store,戶外用品店,行山舖"
             },
             "shop/pet": {
                 "name": "寵物舖",

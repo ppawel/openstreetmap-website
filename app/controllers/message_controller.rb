@@ -24,13 +24,14 @@ class MessageController < ApplicationController
 
         if @message.save
           flash[:notice] = t 'message.new.message_sent'
-          Notifier.message_notification(@message).deliver
+          Notifier.message_notification(@message).deliver_now
           redirect_to :controller => 'message', :action => 'inbox', :display_name => @user.display_name
         end
       end
-    else
-      @title = t 'message.new.title'
     end
+
+    @message ||= Message.new(:recipient => @this_user)
+    @title = t 'message.new.title'
   end
 
   # Allow the user to reply to another message.
@@ -40,9 +41,13 @@ class MessageController < ApplicationController
     if message.to_user_id == @user.id then
       message.update_attribute(:message_read, true)
 
-      @body = "On #{message.sent_on} #{message.sender.display_name} wrote:\n\n#{message.body.gsub(/^/, '> ')}"
-      @title = @subject = "Re: #{message.title.sub(/^Re:\s*/, '')}"
-      @this_user = User.find(message.from_user_id)
+      @message = Message.new(
+        :recipient => message.sender,
+        :title => "Re: #{message.title.sub(/^Re:\s*/, '')}",
+        :body => "On #{message.sent_on} #{message.sender.display_name} wrote:\n\n#{message.body.gsub(/^/, '> ')}",
+      )
+
+      @title = @message.title
 
       render :action => 'new'
     else

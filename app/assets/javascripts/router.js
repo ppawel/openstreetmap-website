@@ -42,8 +42,9 @@
    OSM.Router also handles updating the hash portion of the URL containing transient
    map state such as the position and zoom level. Some route controllers may wish to
    temporarily suppress updating the hash (for example, to omit the hash on pages
-   such as `/way/1234` unless the map is moved). This can be done by calling
-   `OSM.router.moveListenerOff` and `OSM.router.moveListenerOn`.
+   such as `/way/1234` unless the map is moved). This can be done by using
+   `OSM.router.withoutMoveListener` to run a block of code that may update
+   move the map without the hash changing.
  */
 OSM.Router = function(map, rts) {
   var escapeRegExp  = /[\-{}\[\]+?.,\\\^$|#\s]/g;
@@ -75,6 +76,8 @@ OSM.Router = function(map, rts) {
         });
       }
 
+      params = params.concat(Array.prototype.slice.call(arguments, 2));
+
       return (controller[action] || $.noop).apply(controller, params);
     };
 
@@ -100,11 +103,12 @@ OSM.Router = function(map, rts) {
   if (window.history && window.history.pushState) {
     $(window).on('popstate', function(e) {
       if (!e.originalEvent.state) return; // Is it a real popstate event or just a hash change?
-      var path = window.location.pathname + window.location.search;
+      var path = window.location.pathname + window.location.search,
+        route = routes.recognize(path);
       if (path === currentPath) return;
-      currentRoute.run('unload');
+      currentRoute.run('unload', null, route === currentRoute);
       currentPath = path;
-      currentRoute = routes.recognize(currentPath);
+      currentRoute = route;
       currentRoute.run('popstate', currentPath);
       map.setState(e.originalEvent.state, {animate: false});
     });
@@ -113,8 +117,10 @@ OSM.Router = function(map, rts) {
       var path = url.replace(/#.*/, ''),
         route = routes.recognize(path);
       if (!route) return false;
-      currentRoute.run('unload');
-      window.history.pushState(OSM.parseHash(url), document.title, url);
+      currentRoute.run('unload', null, route === currentRoute);
+      var state = OSM.parseHash(url);
+      map.setState(state);
+      window.history.pushState(state, document.title, url);
       currentPath = path;
       currentRoute = route;
       currentRoute.run('pushstate', currentPath);
@@ -154,12 +160,17 @@ OSM.Router = function(map, rts) {
     router.stateChange(state, hash);
   };
 
-  router.moveListenerOn = function() {
-    map.on('moveend', router.updateHash);
-  };
+  router.withoutMoveListener = function (callback) {
+    function disableMoveListener() {
+      map.off('moveend', router.updateHash);
+      map.once('moveend', function () {
+        map.on('moveend', router.updateHash);
+      });
+    }
 
-  router.moveListenerOff = function() {
-    map.off('moveend', router.updateHash);
+    map.once('movestart', disableMoveListener);
+    callback();
+    map.off('movestart', disableMoveListener);
   };
 
   router.load = function() {

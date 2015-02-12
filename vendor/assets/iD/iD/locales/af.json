@@ -65,7 +65,6 @@
         },
         "delete": {
             "title": "Verwyder",
-            "description": "Verwyder van die kaart.",
             "annotation": {
                 "point": "Verwyder 'n punt.",
                 "vertex": "Verwyder 'n punt van 'n weg.",
@@ -237,8 +236,7 @@
         "local_layer": "Plaaslike GPX leer"
     },
     "help": {
-        "title": "Help",
-        "help": "# Help\n\nHierdie is 'n probram vir  [OpenStreetMap](http://www.openstreetmap.org/), die gratis en veranderbarie kaart van die wêreld. Jy kan dit gebruik om nuwe data by te voeg of op te dateer waar jy bly en die \"open-source\" en \"open-data\" kaart beter te maak vir almal wat dit gebruik.\n\nVerandering wat jy aanbring op die kaart sal sigbaar wees vir almal at OpenStreetMap gebruik. Jy het nodig om 'n [nuwe gebruikersnaam](https://www.openstreetmap.org/user/new) vir jou self te skep voor jy data kan toevoeg by die kaart. \n\nDie [iD editor](http://ideditor.com/) is 'n gemeenskapsprojek met die [kode beskikbaar op GitHub](https://github.com/systemed/iD).\n"
+        "title": "Help"
     },
     "intro": {
         "navigation": {
@@ -288,6 +286,12 @@
             },
             "category-route": {
                 "name": "Roete"
+            },
+            "category-water-area": {
+                "name": "Water"
+            },
+            "category-water-line": {
+                "name": "Water"
             }
         },
         "fields": {
@@ -326,18 +330,36 @@
                     }
                 }
             },
+            "access_simple": {
+                "label": "Toegang",
+                "placeholder": "ja"
+            },
             "address": {
                 "label": "Adres",
                 "placeholders": {
                     "housename": "Huisnaam",
-                    "number": "123",
                     "street": "Straat",
                     "city": "Tipe",
-                    "postcode": "Pos Kode"
+                    "postcode": "Poskode",
+                    "place": "Plek"
                 }
             },
             "admin_level": {
                 "label": "Administratiewe vlak"
+            },
+            "aerialway/capacity": {
+                "placeholder": "500, 2500, 5000..."
+            },
+            "aerialway/duration": {
+                "placeholder": "1, 2, 3..."
+            },
+            "aerialway/occupancy": {
+                "placeholder": "2, 4, 8..."
+            },
+            "aerialway/summer/access": {
+                "options": {
+                    "both": "Beide"
+                }
             },
             "aeroway": {
                 "label": "Tipe"
@@ -368,7 +390,17 @@
                 "placeholder": "50, 100, 200..."
             },
             "cardinal_direction": {
-                "label": "Rigting"
+                "label": "Rigting",
+                "options": {
+                    "N": "Noord",
+                    "E": "Oos",
+                    "S": "Suid",
+                    "W": "Wes",
+                    "NE": "Noordoos",
+                    "SE": "Suidoos",
+                    "SW": "Suidwes",
+                    "NW": "Noordwes"
+                }
             },
             "clock_direction": {
                 "label": "Rigting",
@@ -419,6 +451,9 @@
             },
             "fixme": {
                 "label": "Maak My Reg"
+            },
+            "fuel/diesel": {
+                "label": "Verkoop diesel"
             },
             "highway": {
                 "label": "Tipe"
@@ -524,16 +559,7 @@
                 "label": "Tipe"
             },
             "religion": {
-                "label": "Geloof",
-                "options": {
-                    "christian": "Christen",
-                    "muslim": "Moslem",
-                    "buddhist": "Boeddhis",
-                    "jewish": "Joods",
-                    "hindu": "Hindoe",
-                    "shinto": "Sjinto",
-                    "taoist": "Taoist"
-                }
+                "label": "Geloof"
             },
             "restriction": {
                 "label": "Tipe"
@@ -543,9 +569,6 @@
             },
             "route_master": {
                 "label": "Tipe"
-            },
-            "sac_scale": {
-                "label": "Moeilikheidsgraad van voetslaanpad"
             },
             "service": {
                 "label": "Tipe"
@@ -584,9 +607,6 @@
             "towertype": {
                 "label": "Toring tipe"
             },
-            "tracktype": {
-                "label": "Tipe"
-            },
             "trail_visibility": {
                 "label": "Sigbaarheid van voetslaanpad"
             },
@@ -608,9 +628,6 @@
             },
             "wikipedia": {
                 "label": "Wikipedia"
-            },
-            "wood": {
-                "label": "Tipe"
             }
         },
         "presets": {
@@ -681,10 +698,6 @@
                 "name": "Fliek",
                 "terms": "Fliek, Inry, Movie, Silverdoek"
             },
-            "amenity/college": {
-                "name": "Kollege",
-                "terms": "kollege, landboukollege, raad, genootskap"
-            },
             "amenity/courthouse": {
                 "name": "Hof"
             },
@@ -708,12 +721,6 @@
             },
             "amenity/grave_yard": {
                 "name": "Begrafplaas"
-            },
-            "amenity/hospital": {
-                "name": "Hospitaal"
-            },
-            "amenity/kindergarten": {
-                "name": "Kleuterskool"
             },
             "amenity/library": {
                 "name": "Biblioteek"
@@ -754,9 +761,6 @@
             "amenity/restaurant": {
                 "name": "Restaurant"
             },
-            "amenity/school": {
-                "name": "Skool"
-            },
             "amenity/swimming_pool": {
                 "name": "Swembad"
             },
@@ -774,9 +778,6 @@
             },
             "amenity/townhall": {
                 "name": "Stadsaal"
-            },
-            "amenity/university": {
-                "name": "Universiteit"
             },
             "amenity/waste_basket": {
                 "name": "Asblik"
@@ -841,17 +842,11 @@
             "building/apartments": {
                 "name": "Woonstelle"
             },
-            "building/entrance": {
-                "name": "Ingang"
-            },
             "building/house": {
                 "name": "Huis"
             },
             "emergency/phone": {
                 "name": "Noodtelefoon"
-            },
-            "entrance": {
-                "name": "Ingang"
             },
             "highway": {
                 "name": "Snelweg"
@@ -876,9 +871,6 @@
             },
             "highway/motorway": {
                 "name": "Snelweg"
-            },
-            "highway/motorway_junction": {
-                "name": "Snelwegkruising"
             },
             "highway/motorway_link": {
                 "name": "Snelwegaansluiting"
@@ -974,17 +966,9 @@
                 "name": "Begrafplaas",
                 "terms": "begrafplaas, kerkhof, dodeakker, godsakker"
             },
-            "landuse/commercial": {
-                "name": "Kommersieel",
-                "terms": "kommersieel, handeldrywend, "
-            },
             "landuse/construction": {
                 "name": "Konstruksie",
                 "terms": "Konstruksie"
-            },
-            "landuse/farm": {
-                "name": "Plaas",
-                "terms": "Plaas"
             },
             "landuse/farmyard": {
                 "name": "Plaaswerf",
@@ -998,10 +982,6 @@
                 "name": "Gras",
                 "terms": "Gras, weiveld"
             },
-            "landuse/industrial": {
-                "name": "Industrieel",
-                "terms": "industrieel, nyweraar"
-            },
             "landuse/meadow": {
                 "name": "Weiveld",
                 "terms": "weiland, grasland, weiveld"
@@ -1013,14 +993,6 @@
             "landuse/quarry": {
                 "name": "Kwarrie",
                 "terms": "steengroef, klipbreekgat, groef"
-            },
-            "landuse/residential": {
-                "name": "Residensieel",
-                "terms": "residensieel, huisadres, woonhuis"
-            },
-            "landuse/retail": {
-                "name": "Kleinhandel",
-                "terms": "kleinhandel, kleinhandelsaak"
             },
             "landuse/vineyard": {
                 "name": "Druiweprieel",
@@ -1130,10 +1102,6 @@
             "man_made/water_tower": {
                 "name": "Watertoring",
                 "terms": "Watertoring"
-            },
-            "man_made/water_well": {
-                "name": "Put",
-                "terms": "put"
             },
             "man_made/water_works": {
                 "name": "Waterwerke",
@@ -1320,9 +1288,6 @@
             "shop/bicycle": {
                 "name": "Fietswinkel"
             },
-            "shop/books": {
-                "name": "Boekwinkel"
-            },
             "shop/boutique": {
                 "name": "Boetiek"
             },
@@ -1347,9 +1312,6 @@
             "shop/computer": {
                 "name": "Rekenaarwinkel"
             },
-            "shop/confectionery": {
-                "name": "Lekkergoedwinkel"
-            },
             "shop/convenience": {
                 "name": "Geriefswinkel"
             },
@@ -1361,9 +1323,6 @@
             },
             "shop/doityourself": {
                 "name": "Selfdoenwinkel"
-            },
-            "shop/dry_cleaning": {
-                "name": "Droogskoonmakers"
             },
             "shop/electronics": {
                 "name": "Elektronikawinkel"
@@ -1401,9 +1360,6 @@
             "shop/jewelry": {
                 "name": "Juwelier"
             },
-            "shop/kiosk": {
-                "name": "Kiosk"
-            },
             "shop/laundry": {
                 "name": "Wassery"
             },
@@ -1419,14 +1375,8 @@
             "shop/music": {
                 "name": "Musiekwinkel"
             },
-            "shop/newsagent": {
-                "name": "Nuusagentskap"
-            },
             "shop/optician": {
                 "name": "Oogarts"
-            },
-            "shop/outdoor": {
-                "name": "Buitelewewinkel"
             },
             "shop/pet": {
                 "name": "Troeteldierwinkel"
